@@ -60,7 +60,7 @@ def genOutput(text):
 
     # Colors for this char:
     try:
-      thisColorNum=color[charNum]
+      thisColorNum=color[charNum].upper()
       thisColor=settings.COLORS[thisColorNum]
     except:
       thisColor='G'
