@@ -5,7 +5,7 @@ BAUD=57600
 
 TEXTURL='http://karloluiten.nl/rgb_led_matrix/server/banner.txt'
 
-DEBUG=True
+DEBUG=False
 
 SECS_BETWEEN_STEP=0.13
 FONTFILE='./occfont.txt'
@@ -14,9 +14,11 @@ FONTFILE='./occfont.txt'
 NEWLINES='\n\r'
 
 COLORS={
-  'R':'R',
-  'G':'G',
-  'B':'B',
-  'Y':'Y',
-  'Z':'Z',
+  'R':'R', #Red
+  'G':'G', #Green
+  'B':'B', #BLue
+  'Y':'Y', #Yellow
+  'V':'V', #Violet
+  'T':'T', #Teal/turquise
+  'Z':'Z', #Off
   }
