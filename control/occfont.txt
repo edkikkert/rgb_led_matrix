@@ -536,3 +536,11 @@ BEGIN:=
 .11111111
 .........
 END
+BEGIN:`
+...YY....
+.YY.YYY..
+..YYYYYYY
+.....YYYY
+.YYYYYY..
+..YYY....
+END
