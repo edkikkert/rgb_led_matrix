@@ -8,10 +8,13 @@ import re
 import sys
 import serial
 import time
+import urllib2
+import json
+
+import settings
 
 ### SETUP
 def setup():
-  import settings
   bestand=open(settings.FONTFILE)
   # Parse chars
   global abc
@@ -45,6 +48,7 @@ def genOutput(text):
   # Build lines
   totalWidth=0
   lines={0:'',1:'',2:'',3:'',4:'',5:''}
+  charNum=0;
   for char in text:
     try:
       lineDict=abc[char.upper()]['xy']
@@ -54,13 +58,19 @@ def genOutput(text):
       totalWidth+=abc['*']['width']
       print "Ik ken dit teken niet: "+char
 
-    for y in range(6):
-      if(char.isupper()):
-        lines[y]+= lineDict[y].replace('1','*')
-      else:
-        lines[y]+= lineDict[y].replace('1','+')
+    # Colors for this char:
+    try:
+      thisColorNum=color[charNum]
+      thisColor=settings.COLORS[thisColorNum]
+    except:
+      thisColor='G'
 
-  spacer='00000000000000000000000000'
+    for y in range(6):
+      lines[y]+= lineDict[y].replace('1',thisColor)
+
+    charNum+=1
+
+  spacer='..........................'
   for y in range(6):
     #lines[y]=lines[y]+spacer
     lines[y]=spacer+lines[y]+spacer
@@ -107,21 +117,28 @@ def sendToBanner(text):
 
     sendSerial('F')
 
-    time.sleep(0.13)
+    time.sleep(sleepTime)
 
 def looper():
-  try:
-    text=raw_input("Text:")
-  except KeyboardInterrupt:
-    print "Bye!"
-    ser.close()
-    sys.exit()
+  textfile=urllib2.urlopen(settings.TEXTURL)
+  jsonFromFile=json.loads( textfile.read() )
+  textfile.close()
+  global text
+  global color
+  global sleepTime
+  text= jsonFromFile['data']
+  color= jsonFromFile['colors']
+  sleepTime = jsonFromFile['time']
+  if settings.DEBUG:
+    print text,color
 
   try:
     while True:
       sendToBanner(text)
   except KeyboardInterrupt:
-    pass
+    print "Bye!"
+    ser.close()
+    sys.exit()
     
 if __name__=="__main__":
   setup()
