@@ -3,6 +3,8 @@
 TTY='/dev/tty.usbmodemfd121'
 BAUD=57600
 
+DEBUG=True
+
 #Font
 FONTFILE='./occfont.txt'
 

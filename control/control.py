@@ -11,10 +11,7 @@ import time
 
 ### SETUP
 def setup():
-
-  #Get settings
   import settings
-
   bestand=open(settings.FONTFILE)
   # Parse chars
   global abc
@@ -35,17 +32,14 @@ def setup():
       y+=1
 
   bestand.close()
-  print ''.join(abc.keys())
+  if settings.DEBUG:
+    print 'Known characters:'
+    print ''.join(abc.keys())
   global ser
   ser = serial.Serial(settings.TTY,settings.BAUD,timeout=1)
   ser.read(1000)
-  time.sleep(3)
+  time.sleep(2)
   ser.write("SRGBF")
-
-
-def getText():
-  text=raw_input("Text:")
-  return text
 
 def genOutput(text):
   # Build lines
@@ -70,7 +64,8 @@ def genOutput(text):
   for y in range(6):
     #lines[y]=lines[y]+spacer
     lines[y]=spacer+lines[y]+spacer
-    #print lines[y]
+    if settings.DEBUG:
+      print lines[y]
 
   #Steps:
   stepOutLines=[]
@@ -83,10 +78,10 @@ def genOutput(text):
 
     stepOutLines.append(curLines)
   return stepOutLines
-
   
 def sendSerial(x):
-  #print "Sending: " + x
+  if settings.DEBUG:
+    print "Sending: " + x
   ser.write(x)
 
 def sendToBanner(text):
@@ -115,9 +110,6 @@ def sendToBanner(text):
     time.sleep(0.13)
 
 def looper():
-  print "Textplztxbai"
-  print "Ctrl-C kills"
-  
   try:
     text=raw_input("Text:")
   except KeyboardInterrupt:
@@ -125,7 +117,6 @@ def looper():
     ser.close()
     sys.exit()
 
-  print "Sending now. Ctrl-C = new text"
   try:
     while True:
       sendToBanner(text)
@@ -135,5 +126,3 @@ def looper():
 setup()
 while True:
   looper()
-
-
