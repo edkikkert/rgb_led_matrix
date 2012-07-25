@@ -1,5 +1,5 @@
 #Used TTY
-#TTY='/dev/ttyACS0'
+#TTY='/dev/ttyACM0'
 TTY='/dev/tty.usbmodemfd121'
 BAUD=57600
 
@@ -17,5 +17,6 @@ COLORS={
   'R':'R',
   'G':'G',
   'B':'B',
+  'Y':'Y',
   'Z':'Z',
   }
