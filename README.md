@@ -2,7 +2,7 @@ RGB LED Banner
 ==============
 
 ##Intro
-This is an [OCC](http://opencommmunitycamp.org) project. It features a 26 by 6 LED banner.
+This is an [OCC](http://opencommunitycamp.org/site/) project. It features a 26 by 6 LED banner.
 
 ##Hardware
 * ADDME
