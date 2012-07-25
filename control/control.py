@@ -120,20 +120,23 @@ def sendToBanner(text):
     time.sleep(sleepTime)
 
 def looper():
-  textfile=urllib2.urlopen(settings.TEXTURL)
-  jsonFromFile=json.loads( textfile.read() )
-  textfile.close()
   global text
   global color
   global sleepTime
-  text= jsonFromFile['data']
-  color= jsonFromFile['colors']
-  sleepTime = jsonFromFile['time']
-  if settings.DEBUG:
-    print text,color
+
 
   try:
     while True:
+      #What is the text?
+      textfile=urllib2.urlopen(settings.TEXTURL)
+      jsonFromFile=json.loads( textfile.read() )
+      textfile.close()
+      text= jsonFromFile['data']
+      color= jsonFromFile['colors']
+      sleepTime = jsonFromFile['time']
+      if settings.DEBUG:
+        print text,color
+      #Now we have text, send!
       sendToBanner(text)
   except KeyboardInterrupt:
     print "Bye!"
