@@ -1,1 +1,1 @@
-hahahah
+{"data":"Hallo Mensen","colors":"RRRRRRG","time":0.13}
