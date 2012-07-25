@@ -123,6 +123,7 @@ def looper():
   except KeyboardInterrupt:
     pass
     
-setup()
-while True:
-  looper()
+if __name__=="__main__":
+  setup()
+  while True:
+    looper()
