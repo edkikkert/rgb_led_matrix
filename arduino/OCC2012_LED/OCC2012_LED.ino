@@ -66,6 +66,18 @@ void loop(void) {
        strip.setLEDcolor(ledCount, BLUE);
        ledCount++;
        break;
+        case 'Y':
+       strip.setLEDcolor(ledCount, YELLOW);
+       ledCount++;
+       break;
+       case 'V':
+       strip.setLEDcolor(ledCount, VIOLET);
+       ledCount++;
+       break;
+       case 'T':
+       strip.setLEDcolor(ledCount, TEAL);
+       ledCount++;
+       break;
      case 'F':
        ledCount = 0;
        strip.writeStrip();
