@@ -108,7 +108,7 @@ def sendToBanner(text):
 
     for y in range(6):
       #Each line
-      thisLine=stepOutLine[y].replace('0','.')
+      thisLine=stepOutLine[y].replace('.',settings.COLORS[bgcolor])
 
       if(y%2==0):
         sendSerial(thisLine)
@@ -123,7 +123,7 @@ def looper():
   global text
   global color
   global sleepTime
-
+  global bgcolor
 
   try:
     while True:
@@ -133,6 +133,7 @@ def looper():
       textfile.close()
       text= jsonFromFile['data']
       color= jsonFromFile['colors']
+      bgcolor= jsonFromFile['bgcolor']
       sleepTime = jsonFromFile['time']
       if settings.DEBUG:
         print text,color
