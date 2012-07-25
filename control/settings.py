@@ -20,5 +20,6 @@ COLORS={
   'Y':'Y', #Yellow
   'V':'V', #Violet
   'T':'T', #Teal/turquise
+  'W':'W', #White
   'Z':'Z', #Off
   }

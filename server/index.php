@@ -19,6 +19,7 @@ input{font-family:monospace;}
   'Y'       Yellow
   'V'       Violet
   'T'       Teal/turquise
+  'W'       White
   'Z'       Off
 </pre>
 <form method="post">
