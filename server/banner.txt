@@ -1,1 +1,1 @@
-{"data":"Hallo Mensen","colors":"RRRRRRG","time":0.13}
+{"data":"Thanks to our Sponsors - Optiver and Ziggo","colors":"RRRRRRG","time":0.13}
