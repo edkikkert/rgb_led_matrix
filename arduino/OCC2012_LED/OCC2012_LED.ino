@@ -78,12 +78,16 @@ void loop(void) {
        strip.setLEDcolor(ledCount, TEAL);
        ledCount++;
        break;
-     case 'F':
+       case 'W':
+       strip.setLEDcolor(ledCount, WHITE);
+       ledCount++;
+       break;
+       case 'F':
        ledCount = 0;
        strip.writeStrip();
        break;
-      case '.':
-      case 'Z':
+       case '.':
+       case 'Z':
        strip.setLEDcolor(ledCount, BLACK);
        ledCount++;
        break;  
