@@ -3,8 +3,9 @@ if(isset($_POST['data'])){
     $d=$_POST['data'];
     $c=$_POST['colors'];
     $t=$_POST['time'];
-    $data='{"data":"'.$d.'","colors":"'.$c.'","time":'.$t.'}';
-    file_put_contents(realpath('./banner.txt'),$data);
+    $b=$_POST['bgcolor'];
+                $data='{"data":"'.$d.'","colors":"'.$c.'","time":'.$t.',"bgcolor":"'.$b.'"}';
+                file_put_contents(realpath('./banner.txt'),$data);
 }
 
 $con=json_decode(file_get_contents(realpath('./banner.txt')),true);
@@ -25,6 +26,7 @@ input{font-family:monospace;}
 <form method="post">
 <input name="data" value="<?=$con['data']?>"/>&lt; text<br/>
 <input name="colors" value="<?=$con['colors']?>"/>&lt; color<br/>
+<input name="bgcolor" value="<?=$con['bgcolor']?>"/>&lt; bgcolor<br/>
 <input name="time" value="<?=$con['time']?>"/>&lt; time between steps (secs)<br/>
     <input type="submit"/>
 </form>
